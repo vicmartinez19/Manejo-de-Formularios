@@ -3,42 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de Eventos</title>
+  <title>Registro de Eventos - Formulario Completo</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Registro de Evento</h1>
-  <form id="registroEvento">
-    <label for="nombre">Nombre completo:</label>
-    <input type="text" id="nombre" name="nombre" required>
+  <div class="form-wrapper">
+    <header class="form-header">
+      <h1>🎟️ Registro de Evento</h1>
+      <p>Completa tus datos para reservar tu lugar en la convención tecnológica</p>
+    </header>
 
-    <label for="correo">Correo electrónico:</label>
-    <input type="email" id="correo" name="correo" required>
+    <div id="alert-box" class="alert-box hidden"></div>
 
-    <label for="telefono">Teléfono:</label>
-    <input type="tel" id="telefono" name="telefono" required>
+    <form id="registroEvento" novalidate>
+      <div class="form-group">
+        <label for="nombre">Nombre completo <span class="required">*</span></label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej: Diana Prince" required>
+        <span class="error-msg" id="error-nombre"></span>
+      </div>
 
-    <label>Intereses:</label>
-    <label><input type="checkbox" name="intereses" value="tecnología"> Tecnología</label>
-    <label><input type="checkbox" name="intereses" value="negocios"> Negocios</label>
-    <label><input type="checkbox" name="intereses" value="arte"> Arte</label>
+      <div class="form-group">
+        <label for="correo">Correo electrónico <span class="required">*</span></label>
+        <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+        <span class="error-msg" id="error-correo"></span>
+      </div>
 
-    <label>Horario preferido:</label>
-    <label><input type="radio" name="horario" value="mañana" required> Mañana</label>
-    <label><input type="radio" name="horario" value="tarde"> Tarde</label>
-    <label><input type="radio" name="horario" value="noche"> Noche</label>
+      <div class="form-group">
+        <label for="telefono">Teléfono (10 dígitos) <span class="required">*</span></label>
+        <input type="tel" id="telefono" name="telefono" placeholder="5512345678" maxlength="10" required>
+        <span class="error-msg" id="error-telefono"></span>
+      </div>
 
-    <label for="fecha">Fecha del evento:</label>
-    <input type="date" id="fecha" name="fecha" required>
+      <div class="form-group">
+        <label class="group-label">Intereses (selecciona al menos uno) <span class="required">*</span></label>
+        <div class="checkbox-group">
+          <label class="inline-label"><input type="checkbox" name="intereses" value="tecnología"> Tecnología</label>
+          <label class="inline-label"><input type="checkbox" name="intereses" value="negocios"> Negocios</label>
+          <label class="inline-label"><input type="checkbox" name="intereses" value="arte"> Arte</label>
+          <label class="inline-label"><input type="checkbox" name="intereses" value="ciencia"> Ciencia de Datos</label>
+        </div>
+        <span class="error-msg" id="error-intereses"></span>
+      </div>
 
-    <label for="hora">Hora preferida:</label>
-    <input type="time" id="hora" name="hora" required>
+      <div class="form-group">
+        <label class="group-label">Horario preferido <span class="required">*</span></label>
+        <div class="radio-group">
+          <label class="inline-label"><input type="radio" name="horario" value="mañana" required> Mañana</label>
+          <label class="inline-label"><input type="radio" name="horario" value="tarde"> Tarde</label>
+          <label class="inline-label"><input type="radio" name="horario" value="noche"> Noche</label>
+        </div>
+        <span class="error-msg" id="error-horario"></span>
+      </div>
 
-    <label for="archivo">Documento de identificación (opcional):</label>
-    <input type="file" id="archivo" name="archivo">
+      <div class="form-row">
+        <div class="form-group half">
+          <label for="fecha">Fecha del evento <span class="required">*</span></label>
+          <input type="date" id="fecha" name="fecha" required>
+          <span class="error-msg" id="error-fecha"></span>
+        </div>
 
-    <button type="submit">Registrarse</button>
-  </form>
+        <div class="form-group half">
+          <label for="hora">Hora preferida <span class="required">*</span></label>
+          <input type="time" id="hora" name="hora" required>
+          <span class="error-msg" id="error-hora"></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="archivo">Documento de identificación (opcional, máx 2MB, PDF/JPG/PNG):</label>
+        <input type="file" id="archivo" name="archivo" accept=".pdf, .png, .jpg, .jpeg">
+        <span class="error-msg" id="error-archivo"></span>
+      </div>
+
+      <button type="submit" class="submit-btn">Completar Registro</button>
+    </form>
+  </div>
 
   <script src="app.js"></script>
 </body>
